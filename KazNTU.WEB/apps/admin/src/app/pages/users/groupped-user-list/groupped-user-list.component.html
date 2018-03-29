@@ -1,0 +1,29 @@
+<form (ngSubmit)="filter()">
+    <mat-form-field>
+        <input type="text" matInput placeholder="LastName" [formControl]="lastNameControl">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Position" [formControl]="positionControl">
+            <mat-option [value]="null">Select position</mat-option>
+            <mat-option *ngFor="let position of filterPositions" [value]="position.Id">{{position.Title}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select placeholder="Department" [formControl]="departmentControl">
+            <mat-option [value]="null">Select department</mat-option>
+            <mat-option *ngFor="let department of filterDepartments" [value]="department.Id">{{department.Title}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <button type="submit" mat-button color="primary">Filter</button>
+    <button type="button" (click)="reset()" mat-button color="warn">Clear</button>
+</form>
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let department of departments" (opened)="panelOpened(department)" [expanded]="department.Id == openedPanel">
+        <mat-expansion-panel-header>{{department.Title}}</mat-expansion-panel-header>
+        <div class="users">
+            <div class="user" *ngFor="let user of department.Users">
+                {{user.FirstName}} {{user.LastName}} {{user.MiddleName}} ({{user.Position.Title}})
+            </div>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

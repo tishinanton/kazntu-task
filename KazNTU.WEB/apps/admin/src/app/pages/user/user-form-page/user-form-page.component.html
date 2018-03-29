@@ -1,0 +1,30 @@
+<form (ngSubmit)="submit()" [formGroup]="form">
+    <mat-form-field>
+        <input type="text" matInput formControlName="FirstName" placeholder="First name">
+    </mat-form-field>
+    <mat-form-field>
+        <input type="text" matInput formControlName="LastName" placeholder="Last name">
+    </mat-form-field>
+    <mat-form-field>
+        <input type="text" matInput formControlName="MiddleName" placeholder="Middle name">
+    </mat-form-field>
+    <ui-file-input formControlName="Image"></ui-file-input>
+    <mat-radio-group formControlName="Gender">
+        <mat-radio-button [value]="0">Male</mat-radio-button>
+        <mat-radio-button [value]="1">Female</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field>
+        <mat-select formControlName="PositionId" placeholder="Position">
+            <mat-option *ngFor="let position of positions" [value]="position.Id">{{position.Title}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-select formControlName="DepartmentId" placeholder="Department">
+            <mat-option *ngFor="let department of departments" [value]="department.Id">{{department.Title}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <div class="actions">
+        <button type="submit" color="primary" mat-raised-button>Submit</button>
+    </div>
+</form>

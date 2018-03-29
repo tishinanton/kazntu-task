@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    width: 400px;
+    max-width: 90%;
+
+    mat-form-field, mat-radio-group {
+        width: 100%;
+    }
+}
